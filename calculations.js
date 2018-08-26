@@ -1,3 +1,12 @@
+function defaultTemplate(flatK) {
+  if (isNan(flatK) == false) {
+
+  }
+  else {
+    return null
+  }
+}
+
 function convertDmm(input) {
   //inputs mm and returns Dioptre n ViceVersa
   if (isNaN(input) == false ) {
@@ -13,7 +22,7 @@ function mmOrDioptre(input) {
   if (isNan(input) == false) {
     if (input < 20) {
       // input is mm, convert to Diopter
-      new value = convertDmm(input);
+      var value = convertDmm(input);
       return value;
     }
     else if (input > 100) {
@@ -40,3 +49,53 @@ function convertVertex(vertex,power) {
     return null;
   }
 }
+
+function iDH_BC(flatK) {
+  //calculate iDealHydrogel BC
+  if (isNan(flatK) == false) {
+    var bc = (flatK*0.6)+3.5;
+    bc = Math.round(bc/0.2)*0.2; //round to nearest 0.2mm
+    return bc;
+  }
+  else {
+    return null;
+  }
+}
+
+var px = {
+  "input":{
+    "vertex":"",
+    "OD":{
+      "K1":"",
+      "K2":"",
+      "SPH":"",
+      "CYL":"",
+      "AXS":"",
+      "HVID":""
+    },
+    "OS":{
+      "K1":"",
+      "K2":"",
+      "SPH":"",
+      "CYL":"",
+      "AXS":"",
+      "HVID":""
+    }
+  },
+  "output":{
+    "OD":{
+      "BC":"",
+      "SPH":"",
+      "CYL":"",
+      "AXS":"",
+      "DIA":""
+    },
+    "OS":{
+      "BC":"",
+      "SPH":"",
+      "CYL":"",
+      "AXS":"",
+      "DIA":""
+    }
+  }
+};
