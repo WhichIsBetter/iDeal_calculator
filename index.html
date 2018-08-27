@@ -108,5 +108,42 @@
       </div>
     </div>
     </form>
+    <script>
+    function calc() {
+      //get values and assign to px object
+      px.input.vertex = Number(document.getElementsByName("vertex")[0].value);
+      px.input.OD.K1 = Number(document.getElementsByName("ODK1")[0].value);
+      px.input.OD.K2 = Number(document.getElementsByName("ODK2")[0].value);
+      px.input.OD.SPH = Number(document.getElementsByName("ODSPH")[0].value);
+      px.input.OD.CYL = Number(document.getElementsByName("ODCYL")[0].value);
+      px.input.OD.AXS = Number(document.getElementsByName("ODAXS")[0].value);
+      px.input.OD.HVID = Number(document.getElementsByName("ODHVID")[0].value);
+      px.input.OS.K1 = Number(document.getElementsByName("OSK1")[0].value);
+      px.input.OS.K2 = Number(document.getElementsByName("OSK2")[0].value);
+      px.input.OS.SPH = Number(document.getElementsByName("OSSPH")[0].value);
+      px.input.OS.CYL = Number(document.getElementsByName("OSCYL")[0].value);
+      px.input.OS.AXS = Number(document.getElementsByName("OSAXS")[0].value);
+      px.input.OS.HVID = Number(document.getElementsByName("OSHVID")[0].value);
+
+      px = iDH_Calc(px);
+
+    }
+
+    function testData() {
+      //document.getElementsByName("vertex")[0].value;
+      document.getElementsByName("ODK1")[0].value = 45;
+      document.getElementsByName("ODK2")[0].value = "";
+      document.getElementsByName("ODSPH")[0].value = 100;
+      document.getElementsByName("ODCYL")[0].value = -175;
+      document.getElementsByName("ODAXS")[0].value = 176;
+      document.getElementsByName("ODHVID")[0].value = 12;
+      document.getElementsByName("OSK1")[0].value = 45.5;
+      document.getElementsByName("OSK2")[0].value = 7.7;
+      // document.getElementsByName("OSSPH")[0].value;
+      // document.getElementsByName("OSCYL")[0].value;
+      // document.getElementsByName("OSAXS")[0].value;
+      // document.getElementsByName("OSHVID")[0].value;
+    }
+    </script>
   </body>
 </html>
