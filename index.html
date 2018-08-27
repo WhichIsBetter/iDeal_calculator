@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Neuroptyl Diagnostic - Lens Calculator</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+
+    <!-- import the calculations javascript file -->
+    <script src="calculations.js" defer></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <form onsubmit="calc()" enctype="text/plain" name="LensCalc" method="post" target="_self">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col">
+        Neuroptyl Diagnostics <br> iDeal Lens Calculator
+        </div>
+      </div>
+      <div class="row text-center">
+        <!-- Reserved for Lens Type Selection -->
+        <div class="col">
+        </div>
+      </div>
+      <div class="row text-center">
+        <!--Vertex Dist-->
+        <div class="col">
+          <label for="vertex">Vertex Distance</label>
+          <input class="bg-light" type="number" name="vertex" value="12">
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <!--px params-->
+        <div class="col-6"><!--OD-->
+          <div class ="row justify-content-center">
+          OD
+          </div>
+          <div class="row justify-content-center">
+            <div class="d-flex">
+            <label for="ODHVID">HVID</label><input class="bg-light" type="number" name="ODHVID">
+            </div>
+          </div>
+          <div class ="row">
+              <div class="col-6">
+              <div class="d-flex flex-column">
+              <label for="ODK1">K1</label><input class="bg-light" type="number" name="ODK1">
+              </div>
+              <div></div>
+              <div class="d-flex flex-column">
+              <label for="ODK2">K2</label><input class="bg-light" type="number" name="ODK2">
+              </div>
+              </div>
+              <div class="col-6">
+              <div class="d-flex flex-column">
+              <label for="ODSPH">SPH</label><input class="bg-light" type="number" name="ODSPH">
+              </div>
+              <div class="d-flex flex-column">
+              <label for="ODCYL">CYL</label><input class="bg-light" type="number" name="ODCYL">
+              </div>
+              <div class="d-flex flex-column">
+              <label for="ODAXS">AXS</label><input class="bg-light" type="number" name="ODAXS">
+              </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-6"><!--OS-->
+          <div class ="row text-center">
+          OS
+          </div>
+          <div class="row ">
+          <label for="OSHVID">HVID</label><input type="number" name="OSHVID">
+          </div>
+          <div class ="row align-items-center">
+              <div class="col-5">
+              <div class="row">
+              <label for="OSK1">K1</label><input type="number" name="OSK1">
+              </div>
+              <div class="row">
+              <label for="OSK2">K2</label><input type="number" name="OSK2">
+              </div>
+              </div>
+              <div class="col-7">
+              <div class="row">
+              <label for="OSSPH">SPH</label><input type="number" name="OSSPH">
+              </div>
+              <div class="row">
+              <label for="OSCYL">CYL</label><input type="number" name="OSCYL">
+              </div>
+              <div class="row">
+              <label for="OSAXS">AXS</label><input type="number" name="OSAXS">
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 function defaultTemplate(flatK) {
-  if (isNan(flatK) == false) {
+  if (isNaN(flatK) == false) {
 
   }
   else {
@@ -19,7 +19,7 @@ function convertDmm(input) {
 
 function mmOrDioptre(input) {
   //determines input is mm or dioptre and returns Dioptre
-  if (isNan(input) == false) {
+  if (isNaN(input) == false) {
     if (input < 20) {
       // input is mm, convert to Diopter
       var value = convertDmm(input);
@@ -41,7 +41,7 @@ function mmOrDioptre(input) {
 
 function convertVertex(vertex,power) {
   // vertex(mm) conversion of power(Diopters)
-  if (isNAN(vertex) == false && isNan(power) == false) {
+  if (isNAN(vertex) == false && isNaN(power) == false) {
     converted = power/(1-((vertex/1000)*power));
     return converted
   }
@@ -52,7 +52,7 @@ function convertVertex(vertex,power) {
 
 function iDH_BC(flatK) {
   //calculate iDealHydrogel BC
-  if (isNan(flatK) == false) {
+  if (isNaN(flatK) == false) {
     var bc = (flatK*0.6)+3.5;
     bc = Math.round(bc/0.2)*0.2; //round to nearest 0.2mm
     return bc;
