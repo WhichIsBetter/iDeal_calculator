@@ -27,7 +27,8 @@
     <div class="container">
       <div class="row text-center">
         <div class="col">
-        Neuroptyl Diagnostics <br> iDeal Lens Calculator
+        <h1 class="h3 font-weight-normal">Neuroptyl Diagnostics</h1>
+        <h1 class="h4 font-weight-normal">iDeal Lens Calculator</h1>
         </div>
       </div>
       <div class="row text-center">
@@ -35,78 +36,94 @@
         <div class="col">
         </div>
       </div>
-      <div class="row text-center">
+      <div class="row justify-content-center">
         <!--Vertex Dist-->
-        <div class="col">
-          <label for="vertex">Vertex Distance</label>
-          <input class="bg-light" type="number" name="vertex" value="12">
+        <div class="col-3">
+          <div class="row">
+            <label for="vertex" class="col-8 col-form-label text-right">Vertex Distance  </label>
+            <input class="form-control bg-light col-4" type="number" name="vertex" value="12">
+          </div>
         </div>
       </div>
       <div class="row justify-content-around">
         <!--px params-->
-        <div class="col-6"><!--OD-->
+        <div class="col-5"><!--OD-->
           <div class ="row justify-content-center">
-          OD
+          <h1 class="h4 mb-3 font-weight-normal">OD</h1>
           </div>
           <div class="row justify-content-center">
-            <div class="d-flex">
-            <label for="ODHVID">HVID</label><input class="bg-light" type="number" name="ODHVID">
+            <div class="form-group">
+            <label for="ODHVID">HVID</label><input class="form-control bg-light" type="number" name="ODHVID">
             </div>
           </div>
-          <div class ="row">
+          <div class ="row align-items-center">
               <div class="col-6">
-              <div class="d-flex flex-column">
-              <label for="ODK1">K1</label><input class="bg-light" type="number" name="ODK1">
+              <div class="form-group">
+              <label for="ODK1">K1</label><input class="form-control bg-light" type="number" name="ODK1">
               </div>
               <div></div>
-              <div class="d-flex flex-column">
-              <label for="ODK2">K2</label><input class="bg-light" type="number" name="ODK2">
+              <div class="form-group">
+              <label for="ODK2">K2</label><input class="form-control bg-light" type="number" name="ODK2">
               </div>
               </div>
               <div class="col-6">
-              <div class="d-flex flex-column">
-              <label for="ODSPH">SPH</label><input class="bg-light" type="number" name="ODSPH">
+              <div class="form-group">
+              <label for="ODSPH">SPH</label><input class="form-control bg-light" type="number" name="ODSPH">
               </div>
-              <div class="d-flex flex-column">
-              <label for="ODCYL">CYL</label><input class="bg-light" type="number" name="ODCYL">
+              <div class="form-group">
+              <label for="ODCYL">CYL</label><input class="form-control bg-light" type="number" name="ODCYL">
               </div>
-              <div class="d-flex flex-column">
-              <label for="ODAXS">AXS</label><input class="bg-light" type="number" name="ODAXS">
+              <div class="form-group">
+              <label for="ODAXS">AXS</label><input class="form-control bg-light" type="number" name="ODAXS">
               </div>
               </div>
           </div>
         </div>
-        <div class="col-6"><!--OS-->
-          <div class ="row text-center">
-          OS
+        <div class="col-5"><!--OS-->
+          <div class ="row justify-content-center">
+          <h1 class="h4 mb-3 font-weight-normal">OS</h1>
           </div>
-          <div class="row ">
-          <label for="OSHVID">HVID</label><input type="number" name="OSHVID">
+          <div class="row justify-content-center">
+            <div class="form-group">
+            <label for="OSHVID">HVID</label><input class="form-control bg-light" type="number" name="OSHVID">
+            </div>
           </div>
           <div class ="row align-items-center">
-              <div class="col-5">
-              <div class="row">
-              <label for="OSK1">K1</label><input type="number" name="OSK1">
+              <div class="col-6">
+              <div class="form-group">
+              <label for="OSK1">K1</label><input class="form-control bg-light" type="number" name="OSK1">
               </div>
-              <div class="row">
-              <label for="OSK2">K2</label><input type="number" name="OSK2">
+              <div></div>
+              <div class="form-group">
+              <label for="OSK2">K2</label><input class="form-control bg-light" type="number" name="OSK2">
               </div>
               </div>
-              <div class="col-7">
-              <div class="row">
-              <label for="OSSPH">SPH</label><input type="number" name="OSSPH">
+              <div class="col-6">
+              <div class="form-group">
+              <label for="OSSPH">SPH</label><input class="form-control bg-light" type="number" name="OSSPH">
               </div>
-              <div class="row">
-              <label for="OSCYL">CYL</label><input type="number" name="OSCYL">
+              <div class="form-group">
+              <label for="OSCYL">CYL</label><input class="form-control bg-light" type="number" name="OSCYL">
               </div>
-              <div class="row">
-              <label for="OSAXS">AXS</label><input type="number" name="OSAXS">
+              <div class="form-group">
+              <label for="OSAXS">AXS</label><input class="form-control bg-light" type="number" name="OSAXS">
               </div>
               </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="row justify-content-around">
+        <div class="col-6 bg-light">Patient Parameters<br>
+          <span name="pxParams"></span><br>
+        </div>
+      </div>
+      <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
+      <div class="row justify-content-around">
+        <div class="col-6 bg-light">
+          <label for="pxParams" class="">Recommended Parameters</label>
+          <div name="RecommendedParams"> </div>
+        </div>
+      </div>
     </form>
     <script>
     function calc() {
@@ -114,18 +131,28 @@
       px.input.vertex = Number(document.getElementsByName("vertex")[0].value);
       px.input.OD.K1 = Number(document.getElementsByName("ODK1")[0].value);
       px.input.OD.K2 = Number(document.getElementsByName("ODK2")[0].value);
-      px.input.OD.SPH = Number(document.getElementsByName("ODSPH")[0].value);
-      px.input.OD.CYL = Number(document.getElementsByName("ODCYL")[0].value);
+      px.input.OD.SPH = degOrDioptre(document.getElementsByName("ODSPH")[0].value);
+      px.input.OD.CYL = degOrDioptre(document.getElementsByName("ODCYL")[0].value);
       px.input.OD.AXS = Number(document.getElementsByName("ODAXS")[0].value);
       px.input.OD.HVID = Number(document.getElementsByName("ODHVID")[0].value);
       px.input.OS.K1 = Number(document.getElementsByName("OSK1")[0].value);
       px.input.OS.K2 = Number(document.getElementsByName("OSK2")[0].value);
-      px.input.OS.SPH = Number(document.getElementsByName("OSSPH")[0].value);
-      px.input.OS.CYL = Number(document.getElementsByName("OSCYL")[0].value);
+      px.input.OS.SPH = degOrDioptre(document.getElementsByName("OSSPH")[0].value);
+      px.input.OS.CYL = degOrDioptre(document.getElementsByName("OSCYL")[0].value);
       px.input.OS.AXS = Number(document.getElementsByName("OSAXS")[0].value);
       px.input.OS.HVID = Number(document.getElementsByName("OSHVID")[0].value);
 
       px = iDH_Calc(px);
+      var ODRx;
+      var OSRx;
+
+      ODRx = generateRx(px.input.OD.SPH,px.input.OD.CYL,px.input.OD.AXS);
+      OSRx = generateRx(px.input.OS.SPH,px.input.OS.CYL,px.input.OS.AXS);
+      OD = "OD: "+px.input.OD.HVID+"mm, "+generateKs(px.input.OD.K1,px.input.OD.K2)+ODRx;
+      OS = "OS: "+px.input.OS.HVID+"mm, "+generateKs(px.input.OS.K1,px.input.OS.K2)+OSRx;
+      //OD = ODDIA + ODBC + ODRX;
+      //pxParam_Output = ;
+      document.getElementsByName("pxParams")[0].value = OD+"<br>"+OS;
 
     }
 
