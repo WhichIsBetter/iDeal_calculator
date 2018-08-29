@@ -117,12 +117,12 @@ function iDH_BC(flatK) {
 //Generate Rx for print to text box
 function generateRx(SPH,CYL,AXS) {
   if (SPH > 0) {
-    SPH = "+"+SPH.toFixed(2);
+    SPH = "+"+Number(SPH).toFixed(2);
   }
   if(CYL == 0) {
-    return SPH.toFixed(2);
+    return Number(SPH).toFixed(2);
   }
-  return SPH+"/"+CYL.toFixed(2)+"x"+AXS;
+  return Number(SPH).toFixed(2)+"/"+Number(CYL).toFixed(2)+"x"+AXS;
 }
 
 //Generate KReadings print to text box

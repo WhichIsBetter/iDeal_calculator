@@ -37,17 +37,21 @@
         <div class="col">
         <h1 class="h3 font-weight-normal">Neuroptyl Diagnostics</h1>
         <h1 class="h4 font-weight-normal">iDeal Lens Calculator</h1>
-        </div>
-      </div>
-      <div class="row text-center">
-        <!-- Reserved for Lens Type Selection -->
-        <div class="col">
+        <br>
         </div>
       </div>
       <div class="row justify-content-center">
+        <!-- Reserved for Lens Type Selection -->
+          <label for="lenstype" class="col-sm-4 col-6 col-form-label text-right">Lens Type: </label>
+          <select class="form-control bg-light col-sm-4 col-6" name="lenstype">
+            <option value="iDH">iDeal Hydrogel</option>
+            <option value="iDSiHy">iDeal Silicon-Hydrogel</option>
+          </select>
+      </div>
+      <div class="row justify-content-center">
         <!--Vertex Dist-->
-          <label for="vertex" class="col-sm-3 col-5 col-form-label text-right">Vertex Distance  </label>
-          <input class="form-control bg-light col-sm-3 col-5" type="number" name="vertex" value="12">
+          <label for="vertex" class="col-sm-4 col-6 col-form-label text-right">Vertex Distance:  </label>
+          <input class="form-control bg-light col-sm-4 col-6" type="number" name="vertex" value="12">
           <!-- <div class="col-2 col-form-label text-left">mm</div> -->
       </div>
       <div class="row justify-content-around">
@@ -117,18 +121,26 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-around">
-        <div class="col-sm-7 col-11 bg-light">Patient Parameters<br>
+      <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
+      <div class="row justify-content-around" onfocus="calc()">
+        <div class="col-sm-7 col-11 bg-light">Patient Parameters (Tap/Click Here To Calculate)<br>
           <span name="pxParams"></span><br>
         </div>
       </div>
       <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
       <div class="row justify-content-around">
-        <div class="col-sm-7 col-11 bg-light">
-          <label for="pxParams" class="">Recommended Parameters</label>
-          <div name="RecommendedParams"> </div>
+        <div class="col-sm-7 col-11 bg-light">Recommended Parameters<br>
+          <span name="RecommendedParams"> </span>
         </div>
       </div>
+      <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
+      <div class="row justify-content-around">
+        <small class="py-3 bg-light text-info col-sm-7 col-11">
+          Parameters are provided as a guideline only. Practitioner is responsible for choosing final lens parameters.
+        </small>
+        </div>
+      </div>
+
     </form>
     <script>
     function calc() {
@@ -159,6 +171,17 @@
       //pxParam_Output = ;
       document.getElementsByName("pxParams")[0].innerHTML = OD+"<br>"+OS;
 
+      ODNewRx = generateRx(px.iDH_output.OD.SPH,px.iDH_output.OD.CYL,px.iDH_output.OD.AXS);
+      OSNewRx = generateRx(px.iDH_output.OS.SPH,px.iDH_output.OS.CYL,px.iDH_output.OS.AXS);
+      ODCalc = "OD: "+px.iDH_output.OD.DIA+"mm, "+px.iDH_output.OD.BC+"mm, "+ODNewRx;
+      OSCalc = "OS: "+px.iDH_output.OS.DIA+"mm, "+px.iDH_output.OD.BC+"mm, "+OSNewRx;
+
+      var line1;
+
+      if (document.getElementsByName("lenstype")[0].value == "iDH") {
+          line1 = "iDealHydrogel<br>";
+      }
+      document.getElementsByName("RecommendedParams")[0].innerHTML = line1+ODCalc+"<br>"+OSCalc;
     }
 
     function testData() {
