@@ -21,6 +21,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+    <style>
+
+    body {
+      background-color: #F7F7F7;
+    }
+
+    </style>
+
   </head>
   <body>
     <form onsubmit="calc()" enctype="text/plain" name="LensCalc" method="post" target="_self">
@@ -38,18 +46,15 @@
       </div>
       <div class="row justify-content-center">
         <!--Vertex Dist-->
-        <div class="col-3">
-          <div class="row">
-            <label for="vertex" class="col-8 col-form-label text-right">Vertex Distance  </label>
-            <input class="form-control bg-light col-4" type="number" name="vertex" value="12">
-          </div>
-        </div>
+          <label for="vertex" class="col-sm-3 col-5 col-form-label text-right">Vertex Distance  </label>
+          <input class="form-control bg-light col-sm-3 col-5" type="number" name="vertex" value="12">
+          <!-- <div class="col-2 col-form-label text-left">mm</div> -->
       </div>
       <div class="row justify-content-around">
         <!--px params-->
-        <div class="col-5"><!--OD-->
+        <div class="col-sm-5 col-11"><!--OD-->
           <div class ="row justify-content-center">
-          <h1 class="h4 mb-3 font-weight-normal">OD</h1>
+          <h1 class="h4 mt-3 font-weight-normal">OD</h1>
           </div>
           <div class="row justify-content-center">
             <div class="form-group">
@@ -79,9 +84,9 @@
               </div>
           </div>
         </div>
-        <div class="col-5"><!--OS-->
+        <div class="col-sm-5 col-11"><!--OS-->
           <div class ="row justify-content-center">
-          <h1 class="h4 mb-3 font-weight-normal">OS</h1>
+          <h1 class="h4 mt-3 font-weight-normal">OS</h1>
           </div>
           <div class="row justify-content-center">
             <div class="form-group">
@@ -113,13 +118,13 @@
         </div>
       </div>
       <div class="row justify-content-around">
-        <div class="col-6 bg-light">Patient Parameters<br>
+        <div class="col-sm-7 col-11 bg-light">Patient Parameters<br>
           <span name="pxParams"></span><br>
         </div>
       </div>
       <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
       <div class="row justify-content-around">
-        <div class="col-6 bg-light">
+        <div class="col-sm-7 col-11 bg-light">
           <label for="pxParams" class="">Recommended Parameters</label>
           <div name="RecommendedParams"> </div>
         </div>
@@ -152,7 +157,7 @@
       OS = "OS: "+px.input.OS.HVID+"mm, "+generateKs(px.input.OS.K1,px.input.OS.K2)+OSRx;
       //OD = ODDIA + ODBC + ODRX;
       //pxParam_Output = ;
-      document.getElementsByName("pxParams")[0].value = OD+"<br>"+OS;
+      document.getElementsByName("pxParams")[0].innerHTML = OD+"<br>"+OS;
 
     }
 
