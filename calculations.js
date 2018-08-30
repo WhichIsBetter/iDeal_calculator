@@ -21,7 +21,7 @@ function convertDmm(input) {
 //determines input is deg or dioptre and returns Dioptre
 function degOrDioptre(input) {
   input = Number(input);
-  if (Number.isInteger(input)) { //number is degree
+  if (Number.isInteger(input) && Math.abs(input) > 99) { //number is degree
     return input/100;
   }
   else { //number is Diopter
@@ -94,7 +94,7 @@ function chooseFlatK(K1,K2) {
 // vertex(mm) conversion of power(Diopters)
 function convertVertex(vertex,power) {
   if (isNaN(vertex) == false && isNaN(power) == false) {
-    converted = power/(1-((vertex/1000)*power));
+    var converted = power/(1-((vertex/1000)*power));
     return converted
   }
   else {
