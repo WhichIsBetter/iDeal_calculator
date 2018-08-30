@@ -143,6 +143,7 @@ function generateKs(K1,K2) {
   }
 }
 
+// px JSON
 var px = {
   "input":{
     "vertex":"",
@@ -182,6 +183,51 @@ var px = {
     }
   }
 };
+
+// Lens Limits
+var lensLimits = {
+  "iDH":{
+    "DIA": {
+      "MAX":16,
+      "MIN":12
+    },
+    "BC": {
+      "MAX":10,
+      "MIN":5
+    },
+    "SPH": {
+      "MAX":25,
+      "MIN":-25
+    },
+    "ADD": {
+      "MAX":4,
+      "MIN":0.5
+    },
+    "CYL": {
+      "MAX":-0.25,
+      "MIN":-4
+    },
+    "AXS": {
+      "MAX":180,
+      "MIN":1
+    }
+  }
+}
+
+//adjust Output to within Range
+function adjustToWithinRange(product,param,specToChk) {
+  if (specToChk > lensLimits.product.param.MAX || specToChk < lensLimits.product.param.MIN) {
+    if (specToChk > lensLimits.product.param.MAX) {
+      return lensLimits.product.param.MAX;
+    }
+    else {
+      return lensLimits.product.param.MIN;
+    }
+  }
+  else {
+    return specToChk;
+  }
+}
 
 //calculate lens param for iDealHydrogel
 //px is object
