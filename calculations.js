@@ -216,12 +216,12 @@ var lensLimits = {
 
 //adjust Output to within Range
 function adjustToWithinRange(product,param,specToChk) {
-  if (specToChk > lensLimits.product.param.MAX || specToChk < lensLimits.product.param.MIN) {
-    if (specToChk > lensLimits.product.param.MAX) {
-      return lensLimits.product.param.MAX;
+  if (specToChk > lensLimits[product][param].MAX || specToChk < lensLimits[product][param].MIN) {
+    if (specToChk > lensLimits[product][param].MAX) {
+      return lensLimits[product][param].MAX;
     }
     else {
-      return lensLimits.product.param.MIN;
+      return lensLimits[product][param].MIN;
     }
   }
   else {
@@ -245,6 +245,8 @@ function iDH_Calc(px) {
   //calculate BC (iDH)
   px.iDH_output.OD.BC = iDH_BC(convertDmm(px.input.OD.FlatK));
   px.iDH_output.OS.BC = iDH_BC(convertDmm(px.input.OS.FlatK));
+  px.iDH_output.OD.BC = adjustToWithinRange("iDH","BC",px.iDH_output.OD.BC);
+  px.iDH_output.OS.BC = adjustToWithinRange("iDH","BC",px.iDH_output.OS.BC);
 
   //vertex SPH
   px.iDH_output.OD.SPH = convertVertex(px.input.vertex,px.input.OD.SPH);
@@ -253,6 +255,9 @@ function iDH_Calc(px) {
   px.iDH_output.OS.SPH = convertVertex(px.input.vertex,px.input.OS.SPH);
   px.iDH_output.OS.SPH = Math.round(px.iDH_output.OS.SPH/0.25)*0.25;
   px.iDH_output.OS.SPH = px.iDH_output.OS.SPH.toFixed(2);
+  px.iDH_output.OD.SPH = adjustToWithinRange("iDH","SPH",px.iDH_output.OD.SPH);
+  px.iDH_output.OS.SPH = adjustToWithinRange("iDH","SPH",px.iDH_output.OS.SPH);
+
 
   //vertex and calculate CYL
   px.iDH_output.OD.CYL = convertVertex(px.input.vertex,(px.input.OD.SPH+px.input.OD.CYL))-px.iDH_output.OD.SPH;
@@ -261,16 +266,26 @@ function iDH_Calc(px) {
   px.iDH_output.OS.CYL = convertVertex(px.input.vertex,(px.input.OS.SPH+px.input.OS.CYL))-px.iDH_output.OS.SPH;
   px.iDH_output.OS.CYL = Math.round(px.iDH_output.OS.CYL/0.25)*0.25;
   px.iDH_output.OS.CYL = px.iDH_output.OS.CYL.toFixed(2);
+  if (px.iDH_output.OD.CYL <= -0.75) {
+      px.iDH_output.OD.CYL = adjustToWithinRange("iDH","CYL",px.iDH_output.OD.CYL);
+  }
+  if (px.iDH_output.OS.CYL <= -0.75) {
+      px.iDH_output.OS.CYL = adjustToWithinRange("iDH","CYL",px.iDH_output.OS.CYL);
+  }
 
   // Adds axs
   px.iDH_output.OD.AXS = axsCleanUp(px.iDH_output.OD.CYL,px.input.OD.AXS);
   px.iDH_output.OS.AXS = axsCleanUp(px.iDH_output.OS.CYL,px.input.OS.AXS);
+  px.iDH_output.OD.AXS = adjustToWithinRange("iDH","AXS",px.iDH_output.OD.AXS);
+  px.iDH_output.OS.AXS = adjustToWithinRange("iDH","AXS",px.iDH_output.OS.AXS);
 
-  //calculate HVID
+  //calculate DIA
   px.iDH_output.OD.DIA = Math.round((px.input.OD.HVID+2.5)/0.2)*0.2;
   px.iDH_output.OD.DIA = px.iDH_output.OD.DIA.toFixed(1);
   px.iDH_output.OS.DIA = Math.round((px.input.OS.HVID+2.5)/0.2)*0.2;
   px.iDH_output.OS.DIA = px.iDH_output.OS.DIA.toFixed(1);
+  px.iDH_output.OD.DIA = adjustToWithinRange("iDH","DIA",px.iDH_output.OD.DIA);
+  px.iDH_output.OS.DIA = adjustToWithinRange("iDH","DIA",px.iDH_output.OS.DIA);
 
   return px;
 }
