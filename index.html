@@ -44,18 +44,20 @@
       <div class="row justify-content-around">
         <div class="col-sm-5 col-11"> <!-- Reserved for Lens Type Selection -->
           <div class="row justify-content-center">
-            <div class="form-group text-center">
+            <div class="form-group justify-content-center text-center">
             <label for="lenstype">Lens Type</label>
-            <select class="form-control bg-light" name="lenstype">
-              <option value="iDH">iDeal Hydrogel</option>
+            <select class="form-control bg-light col-12" name="lenstype">
+              <option value="iDH">iDealSoft Hydrogel</option>
+              <!--
               <option value="iDSiHy">iDeal Silicon-Hydrogel</option>
+              -->
             </select>
             </div>
           </div>
         </div>
         <div class="col-sm-5 col-11">
           <div class="row justify-content-center">
-            <div class="form-group text-center">
+            <div class="form-group justify-content-center text-center">
             <!--Vertex Dist-->
               <label for="vertex">Vertex Distance</label>
               <input class="form-control bg-light" type="number" name="vertex" value="12">
@@ -66,8 +68,8 @@
       </div>
       <div class="row justify-content-around">
         <!--px params-->
-        <div class="col-sm-5 col-11"><!--OD-->
-          <div class ="row justify-content-center">
+        <div class="col-sm-5 col-11 text-right"><!--OD-->
+          <div class ="row justify-content-center text-right">
           <h1 class="h4 mt-3 font-weight-normal">OD</h1>
           </div>
           <div class="row justify-content-center">
@@ -83,7 +85,7 @@
               <div class="form-group">
               <label for="ODK2">K2</label><input class="form-control bg-light" type="number" name="ODK2">
               </div>
-              <div class="form-group">
+              <div class="multifocal form-group invisible">
               <label for="ODADD">Addition</label><input class="form-control bg-light" type="number" name="ODADD">
               </div>
               </div>
@@ -117,7 +119,7 @@
               <div class="form-group">
               <label for="OSK2">K2</label><input class="form-control bg-light" type="number" name="OSK2">
               </div>
-              <div class="form-group">
+              <div class="multifocal form-group invisible">
               <label for="ODADD">Addition</label><input class="form-control bg-light" type="number" name="ODADD">
               </div>
               </div>
@@ -135,7 +137,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-around">
+      <div class="multifocal row justify-content-around invisible">
         <div class="col-sm-5 col-11 text-center">
             <label class="radio-inline"><input type="radio" name="DominantEye">OD Dominant</label>
         </div>
