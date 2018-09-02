@@ -29,6 +29,22 @@
 
     </style>
 
+    <script>
+    // on selection of multifocal change invisibility
+    $(document).ready(function(){
+      $("[name='lenstype']").change(function(){
+        if(document.getElementsByName("lenstype")[0].value == 'iDHMF') {
+          $(".multifocal").removeClass("invisible");
+          console.log("remove .invisible for Multifocal Components")
+        }
+        else {
+          $(".multifocal").addClass("invisible");
+          console.log("adding .invisible for Multifocal Components")
+        }
+      });
+    });
+    </script>
+
   </head>
   <body>
     <form onsubmit="calc()" enctype="text/plain" name="LensCalc" method="post" target="_self">
@@ -47,7 +63,8 @@
             <div class="form-group justify-content-center text-center">
             <label for="lenstype">Lens Type</label>
             <select class="form-control bg-light col-12" name="lenstype">
-              <option value="iDH">iDealSoft Hydrogel</option>
+              <option value="iDH42">iDealSoft Hydrogel</option>
+              <option value="iDHMF">iDealSoft Hydrogel Multifocal</option>
               <!--
               <option value="iDSiHy">iDeal Silicon-Hydrogel</option>
               -->
@@ -120,7 +137,7 @@
               <label for="OSK2">K2</label><input class="form-control bg-light" type="number" name="OSK2">
               </div>
               <div class="multifocal form-group invisible">
-              <label for="ODADD">Addition</label><input class="form-control bg-light" type="number" name="ODADD">
+              <label for="OSADD">Addition</label><input class="form-control bg-light" type="number" name="OSADD">
               </div>
               </div>
               <div class="col-6">
@@ -139,10 +156,10 @@
       </div>
       <div class="multifocal row justify-content-around invisible">
         <div class="col-sm-5 col-11 text-center">
-            <label class="radio-inline"><input type="radio" name="DominantEye">OD Dominant</label>
+            <label class="radio-inline"><input type="radio" name="DominantEye" id="RDOM">OD Dominant</label>
         </div>
         <div class="col-sm-5 col-11 text-center">
-            <label class="radio-inline"><input type="radio" name="DominantEye">OS Dominant</label>
+            <label class="radio-inline"><input type="radio" name="DominantEye" id="LDOM">OS Dominant</label>
         </div>
       </div>
       <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
@@ -176,14 +193,19 @@
       px.input.OD.CYL = degOrDioptre(document.getElementsByName("ODCYL")[0].value);
       px.input.OD.AXS = Number(document.getElementsByName("ODAXS")[0].value);
       px.input.OD.HVID = Number(document.getElementsByName("ODHVID")[0].value);
+      px.input.OD.ADD = degOrDioptre(document.getElementsByName("ODADD")[0].value);
+
       px.input.OS.K1 = Number(document.getElementsByName("OSK1")[0].value);
       px.input.OS.K2 = Number(document.getElementsByName("OSK2")[0].value);
       px.input.OS.SPH = degOrDioptre(document.getElementsByName("OSSPH")[0].value);
       px.input.OS.CYL = degOrDioptre(document.getElementsByName("OSCYL")[0].value);
       px.input.OS.AXS = Number(document.getElementsByName("OSAXS")[0].value);
       px.input.OS.HVID = Number(document.getElementsByName("OSHVID")[0].value);
+      px.input.OS.ADD = degOrDioptre(document.getElementsByName("OSADD")[0].value);
 
       px = iDH_Calc(px);
+
+      //generate PxParams
       var ODRx;
       var OSRx;
 
@@ -195,16 +217,39 @@
       //pxParam_Output = ;
       document.getElementsByName("pxParams")[0].innerHTML = OD+"<br>"+OS;
 
+
+      //generate RecommendedParams
       ODNewRx = generateRx(px.iDH_output.OD.SPH,px.iDH_output.OD.CYL,px.iDH_output.OD.AXS);
       OSNewRx = generateRx(px.iDH_output.OS.SPH,px.iDH_output.OS.CYL,px.iDH_output.OS.AXS);
       ODCalc = "OD: "+px.iDH_output.OD.DIA+"mm, "+px.iDH_output.OD.BC+"mm, "+ODNewRx;
+      console.log("ODCALC: "+ODCalc);
       OSCalc = "OS: "+px.iDH_output.OS.DIA+"mm, "+px.iDH_output.OS.BC+"mm, "+OSNewRx;
+      console.log("OSCALC: "+OSCalc);
 
       var line1;
 
-      if (document.getElementsByName("lenstype")[0].value == "iDH") {
+      if (document.getElementsByName("lenstype")[0].value == "iDH42") {
           line1 = "iDealHydrogel<br>";
       }
+      else if (document.getElementsByName("lenstype")[0].value == "iDHMF") {
+          line1 = "iDealHydrogel Multifocal<br>";
+          ODCalc = ODCalc+" +"+px.iDH_output.OD.ADD;
+          console.log("ODCALC: "+ODCalc);
+          OSCalc = OSCalc+" +"+px.iDH_output.OS.ADD;
+          console.log("OSCALC: "+OSCalc);
+          if (document.getElementById('RDOM').checked || document.getElementById('LDOM').checked) {
+            if (document.getElementById('RDOM').checked) {
+              ODCalc = ODCalc+" RDOM";
+            }
+            else {
+              OSCalc = OSCalc+" LDOM";
+            }
+          }
+          else {
+            OSCalc = OSCalc+"<br> Please Select Dominant Eye And Click \'Calculate\' Again."
+          }
+      }
+      //outr
       document.getElementsByName("RecommendedParams")[0].innerHTML = line1+ODCalc+"<br>"+OSCalc;
     }
 
@@ -218,6 +263,7 @@
       document.getElementsByName("ODHVID")[0].value = 12;
       document.getElementsByName("OSK1")[0].value = 45.5;
       document.getElementsByName("OSK2")[0].value = 7.7;
+      document.getElementsByName("ODADD")[0].value = 2;
       // document.getElementsByName("OSSPH")[0].value;
       // document.getElementsByName("OSCYL")[0].value;
       // document.getElementsByName("OSAXS")[0].value;

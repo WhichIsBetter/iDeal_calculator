@@ -125,6 +125,16 @@ function generateRx(SPH,CYL,AXS) {
   return Number(SPH).toFixed(2)+"/"+Number(CYL).toFixed(2)+"x"+AXS;
 }
 
+//Generate Addition
+function generateADD(add) {
+    if (add < 0.75) {
+      return 0;
+    }
+    else {
+      return add + 0.5;
+    }
+}
+
 //Generate KReadings print to text box
 function generateKs(K1,K2) {
   if (K1 == null && K2 == null) {
@@ -154,7 +164,8 @@ var px = {
       "SPH":"",
       "CYL":"",
       "AXS":"",
-      "HVID":""
+      "HVID":"",
+      "ADD":""
     },
     "OS":{
       "K1":"",
@@ -163,7 +174,8 @@ var px = {
       "SPH":"",
       "CYL":"",
       "AXS":"",
-      "HVID":""
+      "HVID":"",
+      "ADD":""
     }
   },
   "iDH_output":{
@@ -172,14 +184,16 @@ var px = {
       "SPH":"",
       "CYL":"",
       "AXS":"",
-      "DIA":""
+      "DIA":"",
+      "ADD":""
     },
     "OS":{
       "BC":"",
       "SPH":"",
       "CYL":"",
       "AXS":"",
-      "DIA":""
+      "DIA":"",
+      "ADD":""
     }
   }
 };
@@ -210,6 +224,10 @@ var lensLimits = {
     "AXS": {
       "MAX":180,
       "MIN":1
+    },
+    "ADD": {
+      "MAX":4,
+      "MIN":0.5
     }
   }
 }
@@ -287,5 +305,16 @@ function iDH_Calc(px) {
   px.iDH_output.OD.DIA = adjustToWithinRange("iDH","DIA",px.iDH_output.OD.DIA);
   px.iDH_output.OS.DIA = adjustToWithinRange("iDH","DIA",px.iDH_output.OS.DIA);
 
+  //calculate Addition
+  px.iDH_output.OD.ADD = Math.round(generateADD(px.input.OD.ADD)/0.25)*0.25;
+  px.iDH_output.OD.ADD = px.iDH_output.OD.ADD.toFixed(2);
+  px.iDH_output.OS.ADD = Math.round(generateADD(px.input.OS.ADD)/0.25)*0.25;
+  px.iDH_output.OS.ADD = px.iDH_output.OS.ADD.toFixed(2);
+  if (px.iDH_output.OD.ADD >= 0.75) {
+    px.iDH_output.OD.ADD = adjustToWithinRange("iDH","ADD",px.iDH_output.OD.ADD);
+  }
+  if (px.iDH_output.OS.ADD >= 0.75) {
+    px.iDH_output.OS.ADD = adjustToWithinRange("iDH","ADD",px.iDH_output.OS.ADD);
+  }
   return px;
 }
