@@ -15,6 +15,8 @@
     <!-- import the calculations javascript file -->
     <script src="calculations.js" defer></script>
 
+    <!-- import the FONT-AWESOME -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -164,13 +166,33 @@
       </div>
       <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
       <div class="row justify-content-around" onclick="calc()">
-        <div class="col-sm-7 col-11 bg-light" onclick="calc()">Patient Parameters (Tap/Click Here To Calculate)<br>
-          <span name="pxParams"></span><br>
+        <div class="mt-2 col-sm-7 col-11 bg-light" onclick="calc()">
+          <div class="card">
+            <div class="card-header">Patient Parameters (Tap/Click Here To Calculate)
+            </div>
+            <div class="card-body">
+            <span name="pxParams"></span><br>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
       <div class="row justify-content-around">
-        <div class="col-sm-7 col-11 bg-light">Recommended Parameters<br>
+        <div class="mt-2 col-sm-7 col-11">
+          <div class="card">
+            <div class="card-header">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="more-less fa fa-plus float-right"></i>
+              iDealSoft Hydrogels
+              </a>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            </div>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div class="mt-2 col-sm-7 col-11 bg-light">Recommended Parameters<br>
           <span name="RecommendedParams"> </span>
         </div>
       </div>
@@ -240,8 +262,10 @@
           if (document.getElementById('RDOM').checked || document.getElementById('LDOM').checked) {
             if (document.getElementById('RDOM').checked) {
               ODCalc = ODCalc+" RDOM";
+              OSCalc = OSCalc+" NDOM";
             }
             else {
+              ODCalc = ODCalc+" NDOM";
               OSCalc = OSCalc+" LDOM";
             }
           }
