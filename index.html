@@ -168,7 +168,8 @@
       <div class="row justify-content-around" onclick="calc()">
         <div class="mt-2 col-sm-7 col-11 bg-light" onclick="calc()">
           <div class="card">
-            <div class="card-header">Patient Parameters (Tap/Click Here To Calculate)
+            <div class="card-header">
+              Patient Parameters (Tap/Click Here To Calculate)
             </div>
             <div class="card-body">
             <span name="pxParams"></span><br>
@@ -180,28 +181,71 @@
         <div class="mt-2 col-sm-7 col-11">
           <div class="card">
             <div class="card-header">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <i class="more-less fa fa-plus float-right"></i>
-              iDealSoft Hydrogels
+              <a role="button" data-toggle="collapse" data-target="#iDHBody" aria-expanded="false" aria-controls="iDHBody">
+              <i class="more-less fa fa-plus float-right mt-1"></i>
+              About iDealSoft Hydrogels
               </a>
             </div>
-            <div class="card-body">
+            <div id="iDHBody" class="card-body collapse">
+              <p class="card-text">
+                <ul class="list-unstyled">
+                  <li>Specifications:</li>
+                  <ul>
+                  <li>BC: 5.00-10.00(0.1mm/Step)</li>
+                  <li>Dia: 12.00-16.00(0.5mm/Step)</li>
+                  <li>SPH: +25.00 to -25.00(0.25D/Step)</li>
+                  <li>CYL: -0.25 to -4.00(0.25D/Step)</li>
+                  <li>AXIS: 1°-180°(1°/Step)</li>
+                  <li>ADD: +0.50 to +4.00(0.25D/Step)</li>
+                  </ul>
+                  <li>Toric Lenses Uses Prism Ballast Design For Stabilisation.</li>
+                </ul>
+              </p>
+            </div>
+            </div>
+        </div>
+      </div>
+      <div class="row justify-content-around">
+        <div class="mt-2 col-sm-7 col-11">
+          <div class="card">
+            <div class="card-header">
+              <a role="button" data-toggle="collapse" data-target="#iDSBody" aria-expanded="false" aria-controls="iDHBody">
+              <i class="more-less fa fa-plus float-right mt-1"></i>
+              About iDealSoft Silicon Hydrogels
+              </a>
+            </div>
+            <div id="iDSBody" class="card-body collapse">
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
             </div>
         </div>
       </div>
       <div class="row justify-content-around">
-        <div class="mt-2 col-sm-7 col-11 bg-light">Recommended Parameters<br>
-          <span name="RecommendedParams"> </span>
+        <div class="mt-2 col-sm-7 col-11 bg-light">
+          <div class="card">
+            <div class="card-header">
+              Recommended Parameters
+            </div>
+            <div class="card-body">
+              <span name="RecommendedParams"> </span>
+            </div>
+            <div class="card-footer">
+              <small class="py-3 text-info">
+                Parameters are provided as a guideline only. Practitioner is responsible for choosing final lens parameters.
+              </small>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
+      <!--
       <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
       <div class="row justify-content-around">
         <small class="py-3 bg-light text-info col-sm-7 col-11">
           Parameters are provided as a guideline only. Practitioner is responsible for choosing final lens parameters.
         </small>
         </div>
+      -->
       </div>
 
     </form>
@@ -293,6 +337,16 @@
       // document.getElementsByName("OSAXS")[0].value;
       // document.getElementsByName("OSHVID")[0].value;
     }
+    </script>
+    <script>
+      function toggleIcon(e) {
+          $(e.target)
+              .prev('.card-header')
+              .find(".more-less")
+              .toggleClass('fa-plus fa-minus');
+      }
+      $('.card').on('hidden.bs.collapse', toggleIcon);
+      $('.card').on('shown.bs.collapse', toggleIcon);
     </script>
   </body>
 </html>
