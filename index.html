@@ -17,6 +17,7 @@
 
     <!-- import the FONT-AWESOME -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -190,9 +191,9 @@
       <div class="row justify-content-around iDH">
         <div class="mt-2 col-sm-7 col-11">
           <div class="card">
-            <div class="card-header align-middle">
-              <a class="btn btn-link pl-0"  data-toggle="collapse" data-target="#iDHBody" aria-expanded="false" aria-controls="iDHBody">
-               About iDealSoft Hydrogels
+            <div class="d-inline-block text-truncate card-header align-middle">
+              <a class="btn btn-link pl-0" data-toggle="collapse" data-target="#iDHBody" aria-expanded="false" aria-controls="iDHBody">
+               iDealSoft Hydrogels Lenses
             </a>
             <i class="mt-2 float-right more-less fa fa-plus"></i>
             </div>
@@ -212,6 +213,7 @@
                   <li>AXIS: 1°-180°(1°/Step)</li>
                   <li>ADD: +0.50 to +4.00(0.25D/Step)</li>
                   </ul>
+                  <li>All lenses are Made To Order.<li>
                   <li>Toric Lenses Uses Prism Ballast Design For Stabilisation.</li>
                   <li>Multifocal Lenses features Centre Near Simultanous Lens Design for comfortable vision at All Distances.</li>
                 </ul>
@@ -253,6 +255,49 @@
             </div>
           </div>
         </div>
+        <div class="row justify-content-around">
+          <div class="mt-2 col-sm-7 col-11">
+            <div class="card">
+              <div class="card-header align-middle">
+                <a class="btn btn-link pl-0"  data-toggle="collapse" data-target="#howToOrderBody" aria-expanded="false" aria-controls="howToOrderBody">
+                 How To Order?
+              </a>
+              <i class="mt-2 float-right more-less fa fa-plus"></i>
+              </div>
+              <div id="howToOrderBody" class="card-body collapse">
+                <p class="card-text">
+                  <ul class="list-unstyled">
+                    <li>Send the lens parameters of your choice along with the following information to <br><a href="mailto:orders@neuroptyl.com">orders@neuroptyl.com</a></li>
+                    <br>
+                    <li>First Time Orders:</li>
+                    <ul>
+                      <li>Company UEN</li>
+                      <li>Billing Address</li>
+                      <li>Shipping Address (if different from Billing Address)</li>
+                      <li>Company Bizfile PDF (before the lens is delivered)</li>
+                      <li>Other Remarks(If any)</li>
+                    </ul>
+                    <li>Repeat Orders:</li>
+                    <ul>
+                      <li>Account Number(Company UEN)</li>
+                      <li>Other Remarks(If any)</li>
+                    </ul>
+                  </ul>
+                </p>
+              </div>
+              </div>
+          </div>
+        </div>
+        <div class="row justify-content-around">
+          <div class="mt-2 col-sm-7 col-11">
+            <div class="card">
+              <div class="card-header align-middle">
+                <a class="fblink btn btn-link pl-0" href="http://www.facebook.com/neuroptyl">Like/Contact Us on FB!</a>
+                <a class="fblink" href="http://www.facebook.com/neuroptyl"><i class="mt-1 float-right fab fa-facebook-square fa-2x"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--footer row-->
         <div class="row justify-content-around">
           &nbsp;
@@ -261,13 +306,13 @@
       </div>
       <!--
       <div class="row justify-content-around"><div class="col-6">&nbsp;</div></div>
-      <div class="row justify-content-around">
-        <small class="py-3 bg-light text-info col-sm-7 col-11">
-          Parameters are provided as a guideline only. Practitioner is responsible for choosing final lens parameters.
-        </small>
+        <div class="row justify-content-around">
+          <small class="py-3 bg-light text-info col-sm-7 col-11">
+            Parameters are provided as a guideline only. Practitioner is responsible for choosing final lens parameters.
+          </small>
         </div>
-      -->
       </div>
+      -->
 
     </form>
     <script>
@@ -369,5 +414,14 @@
       $('.card').on('hidden.bs.collapse', toggleIcon);
       $('.card').on('shown.bs.collapse', toggleIcon);
     </script>
+    <script>
+    $( document ).ready(function() {
+      var isMobile = window.matchMedia("only screen and (max-width: 768px)");
+
+      if (isMobile.matches) {
+        $('.fblink').attr('href','fb://www.facebook.com/neuroptyl')
+      }
+    });
+  </script>
   </body>
 </html>

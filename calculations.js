@@ -298,9 +298,9 @@ function iDH_Calc(px) {
   px.iDH_output.OS.AXS = adjustToWithinRange("iDH","AXS",px.iDH_output.OS.AXS);
 
   //calculate DIA
-  px.iDH_output.OD.DIA = Math.round((px.input.OD.HVID+2.5)/0.2)*0.2;
+  px.iDH_output.OD.DIA = Math.round((px.input.OD.HVID+2.5)/0.5)*0.5;
   px.iDH_output.OD.DIA = px.iDH_output.OD.DIA.toFixed(1);
-  px.iDH_output.OS.DIA = Math.round((px.input.OS.HVID+2.5)/0.2)*0.2;
+  px.iDH_output.OS.DIA = Math.round((px.input.OS.HVID+2.5)/0.5)*0.5;
   px.iDH_output.OS.DIA = px.iDH_output.OS.DIA.toFixed(1);
   px.iDH_output.OD.DIA = adjustToWithinRange("iDH","DIA",px.iDH_output.OD.DIA);
   px.iDH_output.OS.DIA = adjustToWithinRange("iDH","DIA",px.iDH_output.OS.DIA);
